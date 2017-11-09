@@ -1,0 +1,84 @@
+body {
+	/* Margin bottom by footer height */
+	margin-bottom: 60px;
+    font-size: 13px;
+}
+
+body > .container {
+  padding: 60px 15px 0;
+}
+.container .text-muted {
+  margin: 20px 0;
+}
+
+.panel-group {
+    border-style: solid !important;
+    border-width: 1px !important;
+    border-color: #ddd;
+}
+
+.panel-default {
+    border: 0 !important;
+}
+
+.panel* {
+	border-radius: 0 !important;
+}
+
+.margin-0{
+    margin-top:0!important;
+    margin-bottom:0!important;
+}
+
+.margin-5{
+    margin-bottom:5px!important;
+}
+
+.panel-heading.row{
+	background: #fff;
+    margin:0!important;
+    padding-left:0!important;
+    padding-right:0!important;
+    border-bottom: thin solid #ddd;
+}
+
+.padding-0{
+    padding-left:0!important;
+    padding-right:0!important;
+}
+
+.panel-heading.row span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+    max-width: 100%;
+}
+
+.panel-heading {
+    cursor: pointer;
+}
+
+.D {
+	color:#FD6400;
+}
+
+.C {
+	color: #009;
+}
+
+.footer {
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  background-color: #f5f5f5;
+}
+
+.footer > .container {
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+}
