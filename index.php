@@ -27,7 +27,10 @@
                         url: 'fetch_data.php',
                         data: $(this).serialize(),
                         success: function (data) {
-                            alert(data);
+                            var json = $.parseJSON(data);
+                            $("#"+json.id+"_pos").css("width", json.pos+"%");
+                            $("#"+json.id+"_neg").css("width", json.neg+"%");
+                            //alert(json.message);
                         }
                     });
                     e.preventDefault();
@@ -102,9 +105,21 @@
                                         <div class="col-xs-12 col-sm-8">
                                             <div class="row">
                                                 <div class="col-xs-12">
+                                                    <div class="progress">
+                                                        <div id="<?php echo $id; ?>_pos" class="progress-bar progress-bar-success" role="progressbar" style="width:<?php echo percentageOf($pos,$total); ?>%">
+                                                            Like
+                                                        </div>
+                                                        <div id="<?php echo $id; ?>_neg"class="progress-bar progress-bar-danger" role="progressbar" style="width:<?php echo percentageOf($neg,$total); ?>%">
+                                                            Hate
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row">
+                                                <div class="col-xs-12">
                                                     <form>
                                                         <button type="submit" class="btn btn-default btn-lg pull-left">
-                                                            <span class="glyphicon glyphicon-thumbs-up" style="color:green" aria-hidden="true"><small> <?php echo percentageOf($pos,$total); ?>%</small></span>
+                                                            <span class="glyphicon glyphicon-thumbs-up" style="color:green" aria-hidden="true"></span>
                                                             <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                                                             <input type="hidden" name="vote" id="vote" value="pos">
                                                         </button>
@@ -112,7 +127,7 @@
 
                                                     <form>
                                                         <button type="submit" class="btn btn-default btn-lg pull-right">
-                                                            <span class="glyphicon glyphicon-thumbs-down" style="color:red" aria-hidden="true"><small> <?php echo percentageOf($neg,$total); ?>%</small></span>
+                                                            <span class="glyphicon glyphicon-thumbs-down" style="color:red" aria-hidden="true"></span>
                                                             <input type="hidden" name="id" id="id" value="<?php echo $id; ?>">
                                                             <input type="hidden" name = "vote" id="vote" value="neg">
                                                         </button>

@@ -1,5 +1,14 @@
 <?php
-    // configuration
+function percentageOf( $number, $everything, $decimals = 0 ){
+    if($everything == 0){
+        return "";
+    }else{
+        return round( $number / $everything * 100, $decimals );
+    };
+};
+
+
+// configuration
     include 'config.php';
 
     if(empty($_POST) or empty($_POST['id']) or empty($_POST['vote'])){
@@ -23,12 +32,22 @@
         $result = $db->query($query);
 
         if($result){
-
+            $result = $db->query("SELECT * from flavours WHERE id = ".$id);
+			while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+				$pos = $row['pos'];
+				$neg = $row['neg'];
+				$total = $pos + $neg;
+				$pos = percentageOf($pos, $total);
+				$neg = percentageOf($neg, $total);
+			};
         }
 
         $response = array(
             'success' => true,
-            'message' => 'Vote processed successfully'
+			'message' => 'Vote processed successfully',
+			'pos' => $pos,
+			'neg' => $neg,
+            'id' => $id
         );
     };
 
